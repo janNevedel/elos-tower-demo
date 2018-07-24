@@ -5,7 +5,7 @@
   tasks:
     - name: Provision a set of instances
       ec2:
-         key_name: jan.nevedel-elos
+         key_name: KNF-shared-key
          group: mmb-demo
          instance_type: t2.micro
          image: ami-7c491f05
