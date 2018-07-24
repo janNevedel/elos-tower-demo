@@ -5,6 +5,7 @@
   tasks:
     - name: Provision a set of instances
       ec2:
+         state: present
          key_name: KNF-shared-key
          group: mmb-demo
          instance_type: t2.micro
@@ -17,8 +18,3 @@
             Name: Demo
          region: eu-west-1
       register: ec2
-
-   - name: Add all instance public IPs to host group
-     add_host: hostname={{ item.public_ip }} groups=mmb-provisioned
-     loop: "{{ ec2.instances }}"
-
