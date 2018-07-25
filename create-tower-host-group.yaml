@@ -9,7 +9,7 @@
     - name: Create Tower host group - web tier
       tower_group:
         inventory: "MMB demo"
-        name: "{{ hostgroup }}-{{ item }}"
+        name: "{{ hostgroup_base_name }}-{{ item }}"
         tower_verify_ssl: no
         state: present
       with_items:
