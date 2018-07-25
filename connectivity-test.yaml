@@ -1,4 +1,4 @@
-- hosts: all
+- hosts: tag_hostgroup_test_20180725095832_app
   gather_facts: no
   tasks:
     - name: Check hosts availability

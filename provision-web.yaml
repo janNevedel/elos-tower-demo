@@ -29,3 +29,7 @@
         - app
         - db
 
+    - name: Publish required variables
+      set_stats:
+        data:
+          hostgroup_base_name: "{{ hostgroup_base_name }}"
