@@ -6,7 +6,7 @@
     hostgroup_base_name: test-20180725095832
 
   tasks:
-    - name: Provision web instances
+    - name: Provision instances
       ec2:
         key_name: KNF-shared-key
         group: mmb-demo
@@ -15,19 +15,17 @@
         wait: true
         exact_count: 2
         count_tag:
-          Name: Demo-web
+          Name: "Demo-{{ item }}"
         instance_tags:
-          Name: Demo-web
-          hostgroup: "{{ hostgroup_base_name }}-web"
+          Name: "Demo-{{ item }}"
+          hostgroup: "{{ hostgroup_base_name }}-{{ item }}"
         region: eu-west-1
         vpc_subnet_id: subnet-35739343
       tags:
         - provision
-      register: web_vms
+      register: "{{ item }}_vms"
+      with_items:
+        - web
+          app
+          db
 
-#    - name: Add instances to host group in Tower
-#      tower_host:
-#        name: "{{ item.private_ip }}"
-#        instance_filters: "tag:hostgroup={{ hostgroup_base_name }}-web"
-#        inventory: "MMB demo"
-#      with_items: "{{ web_vms.instances }}"
