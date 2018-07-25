@@ -8,7 +8,7 @@
   tasks:
     - name: Create Tower host group - web tier
       tower_group:
-        inventory: "MMB demo"
+        inventory: "EC2 KNF inventory"
         name: "{{ hostgroup_base_name }}-{{ item }}"
         instance_filters: "tag:hostgroup={{ hostgroup_base_name }}-{{ item }}"
         state: present
