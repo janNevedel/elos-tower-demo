@@ -3,7 +3,7 @@
   gather_facts: False
 
   vars:
-    host-group: test-20180725095832
+    hostgroup_base_name: test-20180725095832
 
   tasks:
     - name: Provision web instances
@@ -23,3 +23,9 @@
         - provision
       register: web-vms
 
+    - name: Add instances to host group in Tower
+      tower_host:
+        name: "{{ item.private_ip }}"
+        groupname: "{{ hostgroup_base_name }}-web"
+        inventory: "MMB demo"
+      with_items: "{{ web-vms.instances }}"

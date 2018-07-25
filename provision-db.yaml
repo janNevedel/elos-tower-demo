@@ -3,10 +3,10 @@
   gather_facts: False
 
   vars:
-    host-group: test-20180725095832
+    hostgroup_base_name: test-20180725095832
 
   tasks:
-    - name: Provision web instances
+    - name: Provision db instances
       ec2:
         key_name: KNF-shared-key
         group: mmb-demo
@@ -15,11 +15,17 @@
         wait: true
         exact_count: 2
         count_tag:
-          Name: Demo-web
+          Name: Demo-db
         instance_tags:
-          Name: Demo-web
+          Name: Demo-db
         region: eu-west-1
       tags:
         - provision
-      register: web-vms
+      register: db-vms
 
+    - name: Add instances to host group in Tower
+      tower_host:
+        name: "{{ item.private_ip }}"
+        groupname: "{{ hostgroup_base_name }}-db"
+        inventory: "MMB demo"
+      with_items: "{{ db-vms.instances }}"
