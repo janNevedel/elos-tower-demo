@@ -20,6 +20,7 @@
           Name: Demo-web
           hostgroup: "{{ hostgroup_base_name }}-web"
         region: eu-west-1
+        vpc_subnet_id: subnet-35739343
       tags:
         - provision
       register: web_vms
