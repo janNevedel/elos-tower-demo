@@ -26,6 +26,6 @@
       register: "{{ item }}_vms"
       with_items:
         - web
-          app
-          db
+        - app
+        - db
 
