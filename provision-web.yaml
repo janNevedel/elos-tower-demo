@@ -18,14 +18,15 @@
           Name: Demo-web
         instance_tags:
           Name: Demo-web
+          hostgroup: "{{ hostgroup_base_name }}-web"
         region: eu-west-1
       tags:
         - provision
-      register: webvms
+      register: web_vms
 
-    - name: Add instances to host group in Tower
-      tower_host:
-        name: "{{ item.private_ip }}"
-        groupname: "{{ hostgroup_base_name }}-web"
-        inventory: "MMB demo"
-      with_items: "{{ webvms.instances }}"
+#    - name: Add instances to host group in Tower
+#      tower_host:
+#        name: "{{ item.private_ip }}"
+#        instance_filters: "tag:hostgroup={{ hostgroup_base_name }}-web"
+#        inventory: "MMB demo"
+#      with_items: "{{ web_vms.instances }}"

@@ -10,7 +10,7 @@
       tower_group:
         inventory: "MMB demo"
         name: "{{ hostgroup_base_name }}-{{ item }}"
-        tower_verify_ssl: no
+        instance_filters: "tag:hostgroup={{ hostgroup_base_name }}-{{ item }}"
         state: present
       with_items:
         - app
