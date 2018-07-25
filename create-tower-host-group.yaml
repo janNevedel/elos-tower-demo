@@ -8,7 +8,7 @@
   tasks:
     - name: Create Tower host group
       inventory: "MMB demo"
-      name: {{ host-group }}
+      name: "{{ host-group }}"
       tower_verify_ssl: no
       state: present
 
