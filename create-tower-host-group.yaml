@@ -3,12 +3,16 @@
   gather_facts: False
 
   vars:
-    hostgroup: test-20180725095832
+    hostgroup_base_name: test-20180725095832
 
   tasks:
-    - name: Create Tower host group
+    - name: Create Tower host group - web tier
       tower_group:
         inventory: "MMB demo"
-        name: "{{ hostgroup }}"
+        name: "{{ hostgroup }}-{{ item.name }}"
         tower_verify_ssl: no
         state: present
+      with_items:
+        - app
+        - web
+        - db
