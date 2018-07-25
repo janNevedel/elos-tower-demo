@@ -21,11 +21,11 @@
         region: eu-west-1
       tags:
         - provision
-      register: web_vms
+      register: webvms
 
     - name: Add instances to host group in Tower
       tower_host:
         name: "{{ item.private_ip }}"
         groupname: "{{ hostgroup_base_name }}-web"
         inventory: "MMB demo"
-      with_items: "{{ web_vms.instances }}"
+      with_items: "{{ webvms.instances }}"
