@@ -1,0 +1,6 @@
+- hosts: all
+  gather_facts: no
+  tasks:
+    - name: Check hosts availability
+      wait_for_connection:
+        timeout: 5
