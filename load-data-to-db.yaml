@@ -7,6 +7,6 @@
         dest: /root/mysqlsampledatabase.sql
 
     - name: Load test data to DB
-      command: /bin/mysql < mysqlsampledb.sql
+      command: "/bin/mysql < /root/mysqlsampledb.sql"
 
 
