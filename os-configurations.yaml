@@ -1,6 +1,7 @@
 - hosts: all
   gather_facts: False
   tasks:
+
     - name: Register systems to Red Hat Subscription Management
       redhat_subscription:
         org_id: 5996273
