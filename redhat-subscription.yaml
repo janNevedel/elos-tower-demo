@@ -2,7 +2,6 @@
   tasks:
     - name: Register systems to Red Hat Subscription Management
       redhat_subscription:
-        auto_attach: yes
         org_id: 5996273
         activationkey: elosPOC
         force_register: yes
