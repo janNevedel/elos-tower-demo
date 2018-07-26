@@ -1,0 +1,11 @@
+- hosts: all
+  gather_facts: False
+  tasks:
+    - name: Install Apache web server
+      yum:
+        name: httpd
+        state: installed
+    - name: Install php
+      yum:
+        name: php
+        state: installed
