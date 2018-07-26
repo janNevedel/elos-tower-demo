@@ -5,3 +5,9 @@
       yum:
         name: mariadb-server
         state: installed
+
+    - name: Start and enable MariaDB service
+      service:
+        name: mariadb.service
+        enabled: yes
+        state: started
