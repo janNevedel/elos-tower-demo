@@ -6,7 +6,15 @@
         src: mysqlsampledatabase.sql
         dest: /root/mysqlsampledatabase.sql
 
+    - name: Copy the file with create user command
+      copy:
+        src: mysqlcreateuser.sql
+        dest: /root/mysqlcreateuser.sql
+
+
     - name: Load test data to DB
       shell: cat /root/mysqlsampledatabase.sql | mysql -u root
 
+    - name: Create user
+      shell: cat /root/mysqlcreateuser.sql | mysql -u root
 
