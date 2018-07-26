@@ -1,7 +1,9 @@
 - hosts: all
   gather_facts: False
   tasks:
-
+    - name: Set up a hostname
+      hostname:
+        name: "{{ ansible_default_ipv4.address }}.elos-cfme-tower-demo.cz"
     - name: Register systems to Red Hat Subscription Management
       redhat_subscription:
         org_id: 5996273
