@@ -7,6 +7,6 @@
         dest: /root/mysqlsampledatabase.sql
 
     - name: Load test data to DB
-      command: "cat /root/mysqlsampledatabase.sql | mysql -u root"
+      shell: cat /root/mysqlsampledatabase.sql | mysql -u root
 
 
