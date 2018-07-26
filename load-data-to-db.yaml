@@ -7,9 +7,6 @@
         dest: /root/mysqlsampledatabase.sql
 
     - name: Load test data to DB
-      mysql_db:
-        state: import
-        name: all
-        target: /root/mysqlsampledatabase.sql
+      command: "cat /root/mysqlsampledatabase.sql | mysql -u root"
 
 
