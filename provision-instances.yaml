@@ -2,9 +2,6 @@
   connection: local
   gather_facts: False
 
-  vars:
-    hostgroup_base_name: test-20180725095832
-
   tasks:
     - name: Provision instances
       ec2:
@@ -29,7 +26,23 @@
         - app
         - db
 
-    - name: Publish required variables
-      set_stats:
-        data:
-          hostgroup_base_name: "{{ hostgroup_base_name }}"
+    - name: Provision instances
+      ec2:
+        key_name: KNF-shared-key
+        group: mmb-demo
+        instance_type: t2.micro
+        image: ami-7c491f05
+        wait: true
+        exact_count: 1
+        count_tag:
+          Name: "{{ hostgroup_base_name }}_{{ item }}"
+        instance_tags:
+          Name: "{{ hostgroup_base_name }}_{{ item }}"
+          hostgroup: "{{ hostgroup_base_name }}_{{ item }}"
+        region: eu-west-1
+        vpc_subnet_id: subnet-35739343
+      tags:
+        - provision
+      register: "{{ item }}_vms"
+      with_items:
+        - db
