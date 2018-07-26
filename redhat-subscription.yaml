@@ -1,9 +1,10 @@
 - hosts: all
+  gather_facts: False
   tasks:
     - name: Register systems to Red Hat Subscription Management
       redhat_subscription:
         org_id: 5996273
         activationkey: elosPOC
-        force_register: yes
+        force_register: True
 
 
