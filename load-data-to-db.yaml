@@ -2,9 +2,9 @@
   gather_facts: True
   tasks:
     - name: Copy test data to the target DB VM
-      file: 
+      copy: 
         src: mysqlsampledatabase.sql
-        path: /root/mysqlsampledatabase.sql
+        dest: /root/mysqlsampledatabase.sql
 
     - name: Load test data to DB
       command: /bin/mysql < mysqlsampledb.sql
