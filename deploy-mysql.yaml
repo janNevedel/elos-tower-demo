@@ -4,3 +4,4 @@
     - name: Deploy MariaDB server
       yum:
         name: mariadb-server
+        state: installed
