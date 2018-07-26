@@ -15,10 +15,10 @@
         wait: true
         exact_count: 2
         count_tag:
-          Name: "Demo-{{ hostgroup_base_name }}-{{ item }}"
+          Name: "{{ hostgroup_base_name }}_{{ item }}"
         instance_tags:
-          Name: "Demo-{{ hostgroup_base_name }}-{{ item }}"
-          hostgroup: "{{ hostgroup_base_name }}-{{ item }}"
+          Name: "{{ hostgroup_base_name }}_{{ item }}"
+          hostgroup: "{{ hostgroup_base_name }}_{{ item }}"
         region: eu-west-1
         vpc_subnet_id: subnet-35739343
       tags:
