@@ -9,3 +9,7 @@
       yum:
         name: php
         state: installed
+    - name: Install php-mysql
+      yum:
+        name: php-mysql
+        state: installed
