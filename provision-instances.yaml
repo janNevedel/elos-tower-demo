@@ -23,7 +23,6 @@
       register: "{{ item }}_vms"
       with_items:
         - web
-        - db
 
     - name: Provision instances
       ec2:
