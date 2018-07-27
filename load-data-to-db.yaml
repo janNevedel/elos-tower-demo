@@ -1,5 +1,8 @@
 - hosts: all
   gather_facts: True
+  vars:
+    dbPassword: test
+    dbUsername: redhat
   tasks:
     - name: Copy test data to the target DB VM
       copy: 
@@ -7,8 +10,8 @@
         dest: /root/mysqlsampledatabase.sql
 
     - name: Copy the file with create user command
-      copy:
-        src: mysqlcreateuser.sql
+      template:
+        src: mysqlcreateuser.sql.j2
         dest: /root/mysqlcreateuser.sql
 
 
