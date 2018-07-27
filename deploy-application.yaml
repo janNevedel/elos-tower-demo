@@ -1,4 +1,9 @@
 - hosts: all
+  vars:
+    dbServerIp: "172.31.16.248"
+    dbUsername: "test"
+    dbPassword: "redhat"
+
   tasks:
     - name: Deploy PHP application
       template:
