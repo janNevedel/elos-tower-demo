@@ -3,7 +3,7 @@
   gather_facts: False
 
   tasks:
-    - name: Provision instances
+    - name: Provision DB instance
       ec2:
         key_name: KNF-shared-key
         group: mmb-demo
@@ -20,7 +20,7 @@
         vpc_subnet_id: subnet-35739343
       register: "dbvms"
 
-    - name: Provision instances
+    - name: Provision web instances
       ec2:
         key_name: KNF-shared-key
         group: mmb-demo
