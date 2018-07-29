@@ -10,7 +10,7 @@
         src: index.php.j2
         dest: /var/www/html/index.php
     - name: Configure DB IP address
-      shell: sed \"s/AAAAA-SERVER-NAME/\$(cat /etc/elos-demo.conf)/g\" /var/www/html/index.php
+      shell: sed -i \"s/AAAAA-SERVER-NAME/\$(cat /etc/elos-demo.conf)/g\" /var/www/html/index.php
     - name: Start the Apache service
       service:
         name: httpd
