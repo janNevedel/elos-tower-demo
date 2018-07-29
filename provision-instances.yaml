@@ -12,18 +12,13 @@
         wait: true
         exact_count: 1
         count_tag:
-          Name: "{{ hostgroup_base_name }}_{{ item }}"
+          Name: "{{ hostgroup_base_name }}_db"
         instance_tags:
-          Name: "{{ hostgroup_base_name }}_{{ item }}"
-          hostgroup: "{{ hostgroup_base_name }}_{{ item }}"
+          Name: "{{ hostgroup_base_name }}_db"
+          hostgroup: "{{ hostgroup_base_name }}_db"
         region: eu-west-1
         vpc_subnet_id: subnet-35739343
-      tags:
-        - provision
-      register: "{{ item }}_vms"
-      with_items:
-        - db
-
+      register: "dbvms"
 
     - name: Provision instances
       ec2:
@@ -43,8 +38,4 @@
         user_data: |
                    #!/bin/bash
                    echo "{{ item.private_ip }}" > /etc/elos-demo.conf
-      tags:
-        - provision
-      register: "web_vms"
-      with_items:
-        - db_vms.instances
+      with_items: "{{ dbvms.instances }}"
