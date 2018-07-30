@@ -16,3 +16,7 @@
         name: httpd
         enabled: True
         state: started
+    - name: Send final Slack notification
+      slack:
+        msg: "*Your service is available on http://{{ webServerIp }}*"
+
