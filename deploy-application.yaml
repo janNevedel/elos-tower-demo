@@ -16,8 +16,4 @@
         name: httpd
         enabled: True
         state: started
-    - name: Send final Slack notification
-      slack:
-        token: "xoxp-406252418640-407106802613-406253044192-004a304e692a80ba46b4ec6ffc349e78"
-        msg: "*Your service is available on http://{{ ansible_default_ipv4.address }}*"
 
