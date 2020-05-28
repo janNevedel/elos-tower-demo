@@ -1,6 +1,8 @@
 - hosts: tag_Project_AnsibleTowerDemo
   gather_facts: True
   tasks:
+    - name: Wait 600 seconds for target connection to become reachable/usable
+      wait_for_connection:
     - name: Set up a hostname
       hostname:
         name: "{{ ansible_default_ipv4.address }}.elos-cfme-tower-demo.cz"
