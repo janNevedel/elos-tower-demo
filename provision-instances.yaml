@@ -16,7 +16,7 @@
           Name: "TowerDemo_db"
           hostgroup: "TowerDemo_db"
           Project: AnsibleTowerDemo
-        region: eu-west-1
+        region: eu-central-1
         vpc_subnet_id: subnet-bf0f3cd7
       register: "dbvms"
 
@@ -33,7 +33,7 @@
         instance_tags:
           Name: "TowerDemo_web"
           hostgroup: "TowerDemo_web"
-        region: eu-west-1
+        region: eu-central-1
         vpc_subnet_id: subnet-bf0f3cd7
         user_data: |
           #!/bin/bash
