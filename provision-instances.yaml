@@ -33,6 +33,7 @@
         instance_tags:
           Name: "TowerDemo_web"
           hostgroup: "TowerDemo_web"
+          Project: AnsibleTowerDemo
         region: eu-central-1
         vpc_subnet_id: subnet-bf0f3cd7
         user_data: |
