@@ -3,4 +3,4 @@
   tasks:
     - name: Check hosts availability
       wait_for_connection:
-        timeout: 5
+        timeout: 300
