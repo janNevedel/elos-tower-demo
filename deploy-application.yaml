@@ -1,8 +1,8 @@
 - hosts: all
   vars:
     dbServerIp: "172.31.16.248"
-    dbUsername: "test"
-    dbPassword: "redhat"
+    dbUsername: "redhat"
+    dbPassword: "test"
 
   tasks:
     - name: Deploy PHP application
@@ -16,4 +16,3 @@
         name: httpd
         enabled: True
         state: started
-
