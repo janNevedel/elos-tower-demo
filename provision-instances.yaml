@@ -1,9 +1,8 @@
 hosts: localhost
 connection: local
 gather_facts: False
-
-  tasks:
-    - name: Provision DB instance
+tasks:
+  - name: Provision DB instance
       ec2:
         key_name: CFME-RHForum-Lab
         group: Ansible-tower
