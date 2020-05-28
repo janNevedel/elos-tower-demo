@@ -11,5 +11,5 @@
         state: installed
     - name: Install php-mysql
       yum:
-        name: php-mysql
+        name: php-mysqlnd
         state: installed
