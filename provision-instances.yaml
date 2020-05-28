@@ -11,10 +11,10 @@
         wait: true
         exact_count: 1
         count_tag:
-          Name: "{{ hostgroup_base_name }}_db"
+          Name: "TowerDemo_db"
         instance_tags:
-          Name: "{{ hostgroup_base_name }}_db"
-          hostgroup: "{{ hostgroup_base_name }}_db"
+          Name: "TowerDemo_db"
+          hostgroup: "TowerDemo_db"
           Project: AnsibleTowerDemo
         region: eu-west-1
         vpc_subnet_id: subnet-bf0f3cd7
@@ -29,10 +29,10 @@
         wait: true
         exact_count: 2
         count_tag:
-          Name: "{{ hostgroup_base_name }}_web"
+          Name: "TowerDemo_web"
         instance_tags:
-          Name: "{{ hostgroup_base_name }}_web"
-          hostgroup: "{{ hostgroup_base_name }}_web"
+          Name: "TowerDemo_web"
+          hostgroup: "TowerDemo_web"
         region: eu-west-1
         vpc_subnet_id: subnet-bf0f3cd7
         user_data: |
