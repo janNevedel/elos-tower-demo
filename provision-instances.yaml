@@ -2,40 +2,40 @@ hosts: localhost
 connection: local
 gather_facts: False
 tasks:
-    - name: Provision DB instance
-      ec2:
-        key_name: CFME-RHForum-Lab
-        group: Ansible-tower
-        instance_type: t2.micro
-        image: ami-07dfba995513840b5
-        wait: true
-        exact_count: 1
-        count_tag:
-          Name: "{{ hostgroup_base_name }}_db"
-        instance_tags:
-          Name: "{{ hostgroup_base_name }}_db"
-          hostgroup: "{{ hostgroup_base_name }}_db"
-          Project: AnsibleTowerDemo
-        region: eu-west-1
-        vpc_subnet_id: subnet-bf0f3cd7
-      register: "dbvms"
+  - name: Provision DB instance
+    ec2:
+      key_name: CFME-RHForum-Lab
+      group: Ansible-tower
+      instance_type: t2.micro
+      image: ami-07dfba995513840b5
+      wait: true
+      exact_count: 1
+      count_tag:
+        Name: "{{ hostgroup_base_name }}_db"
+      instance_tags:
+        Name: "{{ hostgroup_base_name }}_db"
+        hostgroup: "{{ hostgroup_base_name }}_db"
+        Project: AnsibleTowerDemo
+      region: eu-west-1
+      vpc_subnet_id: subnet-bf0f3cd7
+    register: "dbvms"
 
-    - name: Provision web instances
-      ec2:
-        key_name: CFME-RHForum-Lab
-        group: Ansible-tower
-        instance_type: t2.micro
-        image: ami-07dfba995513840b5
-        wait: true
-        exact_count: 2
-        count_tag:
-          Name: "{{ hostgroup_base_name }}_web"
-        instance_tags:
-          Name: "{{ hostgroup_base_name }}_web"
-          hostgroup: "{{ hostgroup_base_name }}_web"
-        region: eu-west-1
-        vpc_subnet_id: subnet-bf0f3cd7
-        user_data: |
-                   #!/bin/bash
-                   echo "{{ item.private_ip }}" > /etc/elos-demo.conf
-      with_items: "{{ dbvms.instances }}"
+  - name: Provision web instances
+    ec2:
+      key_name: CFME-RHForum-Lab
+      group: Ansible-tower
+      instance_type: t2.micro
+      image: ami-07dfba995513840b5
+      wait: true
+      exact_count: 2
+      count_tag:
+        Name: "{{ hostgroup_base_name }}_web"
+      instance_tags:
+        Name: "{{ hostgroup_base_name }}_web"
+        hostgroup: "{{ hostgroup_base_name }}_web"
+      region: eu-west-1
+      vpc_subnet_id: subnet-bf0f3cd7
+      user_data: |
+        #!/bin/bash
+        echo "{{ item.private_ip }}" > /etc/elos-demo.conf
+    with_items: "{{ dbvms.instances }}"
